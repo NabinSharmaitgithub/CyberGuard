@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CyberGuard Login</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Custom Tailwind config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            neon: '#00f6ff',
+          },
+          boxShadow: {
+            neon: '0 0 20px #00f6ff, 0 0 40px #00f6ff',
+          },
+          keyframes: {
+            pulseGlow: {
+              '0%, 100%': { boxShadow: '0 0 15px #00f6ff, 0 0 30px #00f6ff' },
+              '50%': { boxShadow: '0 0 30px #00f6ff, 0 0 60px #00f6ff' },
+            },
+          },
+          animation: {
+            pulseGlow: 'pulseGlow 2s infinite',
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Custom CSS -->
+  <style>
+    body {
+      background: url('https://images.unsplash.com/photo-1625314868143-20e1f1a7c39a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')
+        no-repeat center center fixed;
+      background-size: cover;
+    }
+    .glass {
+      backdrop-filter: blur(14px);
+      background: rgba(0, 0, 0, 0.55);
+      border: 1px solid rgba(0, 246, 255, 0.4);
+    }
+  </style>
+</head>
+<body class="flex items-center justify-center h-screen text-white">
+
+  <!-- Login Card -->
+  <div class="glass p-10 rounded-2xl shadow-neon animate-pulseGlow w-[400px]">
+    
+    <!-- Logo -->
+    <div class="flex flex-col items-center mb-6">
+      <img 
+        src="cyber.png" 
+        alt="Cyber Lion Logo" 
+        class="w-20 h-20 mb-2 animate-bounce filter drop-shadow-[0_0_15px_#00f6ff]"
+      />
+      <h1 class="text-2xl font-bold tracking-wide text-neon">CYBERGUARD</h1>
+    </div>
+
+    <!-- Form -->
+    <form id="loginForm" class="space-y-6" method="POST" action="/login">
+      {% if error %}
+        <p class="text-red-500">{{ error }}</p>
+      {% endif %}
+      <input 
+        type="text" 
+        name="username"
+        placeholder="Username" 
+        class="w-full px-4 py-2 rounded-lg bg-black/50 text-neon border border-neon focus:outline-none focus:ring-2 focus:ring-neon placeholder-gray-400"
+        required
+      />
+      <input 
+        type="password" 
+        name="password"
+        placeholder="Password" 
+        class="w-full px-4 py-2 rounded-lg bg-black/50 text-neon border border-neon focus:outline-none focus:ring-2 focus:ring-neon placeholder-gray-400"
+        required
+      />
+
+      <button 
+        type="submit" 
+        class="w-full py-2 rounded-lg bg-neon text-black font-semibold hover:bg-cyan-300 transition duration-300 shadow-neon"
+      >
+        LOGIN
+      </button>
+    </form>
+
+    <!-- Links -->
+    <div class="flex justify-between text-sm mt-4">
+      <a href="#" class="text-cyan-300 hover:underline">Forgot Password?</a>
+      <a href="#" class="text-cyan-300 hover:underline">Create Account</a>
+    </div>
+  </div>
+
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sniffer - Vulnerability Scanner</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">Vulnerability Scanner</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/scanner">Scanner</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/sniffer">Sniffer <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/bruteforce">Bruteforce</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/sitemap">Site Mapper</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/find_connected">Find Connected</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/user_recon">User Recon</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/version_scan">Version Scan</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h1>Network Sniffer</h1>
+        <p>Capture network packets on a target host.</p>
+
+        {% if error %}
+            <div class="alert alert-danger">{{ error }}</div>
+        {% endif %}
+
+        <form method="POST" action="/sniffer">
+            <div class="form-group">
+                <label for="target">Target Host</label>
+                <input type="text" class="form-control" id="target" name="target" value="{{ target if target }}" required>
+            </div>
+            <div class="form-group">
+                <label for="duration">Duration (seconds)</label>
+                <input type="number" class="form-control" id="duration" name="duration" value="{{ duration if duration else 10 }}" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Start Sniffing</button>
+        </form>
+
+        {% if output %}
+            <h2 class="mt-4">Sniffer Output</h2>
+            <pre class="bg-light p-3">{{ output }}</pre>
+        {% endif %}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

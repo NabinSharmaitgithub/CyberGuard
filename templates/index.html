@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vulnerability Scanner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-8">
+        <h1 class="text-4xl font-bold text-center mb-10">Vulnerability Scanner</h1>
+        <a href="/logout">Logout</a>
+<a href="/scanner">Scanner</a>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <a href="/scanner" class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                <h2 class="text-2xl font-bold mb-2">Scanner</h2>
+                <p class="text-gray-700">Run a comprehensive scan on a target URL to find vulnerabilities.</p>
+            </a>
+            <!-- <a href="/sniffer" class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                <h2 class="text-2xl font-bold mb-2">Sniffer</h2>
+                <p class="text-gray-700">Sniff network packets on a target interface.</p>
+            </a> -->
+            <!-- <a href="/bruteforce" class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                <h2 class="text-2xl font-bold mb-2">Bruteforce</h2>
+                <p class="text-gray-700">Perform a bruteforce attack on SSH services.</p>
+            </a> -->
+            <a href="/sitemap" class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                <h2 class="text-2xl font-bold mb-2">Site Mapper</h2>
+                <p class="text-gray-700">Map the structure of a website.</p>
+            </a>
+            <!-- <a href="/find_connected" class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                <h2 class="text-2xl font-bold mb-2">Find Connected</h2>
+                <p class="text-gray-700">Discover active hosts on your local network.</p>
+            </a> -->
+            <a href="/user_recon" class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                <h2 class="text-2xl font-bold mb-2">User Recon</h2>
+                <p class="text-gray-700">Find social media profiles for a given username.</p>
+            </a>
+            <a href="/version_scan" class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                <h2 class="text-2xl font-bold mb-2">Version Scan</h2>
+                <p class="text-gray-700">Detect technologies and their versions on a web server.</p>
+            </a>
+            <a href="/internal" class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                <h2 class="text-2xl font-bold mb-2">Internal Tools</h2>
+                <p class="text-gray-700">Information about the internal tools.</p>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

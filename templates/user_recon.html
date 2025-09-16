@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Recon - Vulnerability Scanner</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">Vulnerability Scanner</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/scanner">Scanner</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/sniffer">Sniffer</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/bruteforce">Bruteforce</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/sitemap">Site Mapper</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/find_connected">Find Connected</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/user_recon">User Recon <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/version_scan">Version Scan</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h1>Username Reconnaissance</h1>
+        <p>Find a username across social networks.</p>
+
+        {% if error %}
+            <div class="alert alert-danger">{{ error }}</div>
+        {% endif %}
+
+        <form method="POST" action="/user_recon">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" name="username" value="{{ username if username }}" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+
+        {% if found_urls is not none %}
+            <h2 class="mt-4">Reconnaissance Result</h2>
+            {% if found_urls %}
+                <div class="alert alert-success">
+                    <p>Found username on {{ found_urls|length }} websites:</p>
+                    <ul>
+                        {% for social, url in found_urls.items() %}
+                            <li><a href="{{ url }}" target="_blank">{{ social }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% else %}
+                <div class="alert alert-info">
+                    Username not found.
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

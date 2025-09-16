@@ -1,0 +1,11 @@
+ * Serving Flask app 'web_gui'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.10.71:5001
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 121-909-549
+127.0.0.1 - - [16/Sep/2025 23:28:11] "POST /version_scan HTTP/1.1" 200 -

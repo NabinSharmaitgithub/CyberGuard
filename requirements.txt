@@ -1,0 +1,11 @@
+requests
+beautifulsoup4
+pytest
+requests-mock
+colorama
+tqdm
+Flask
+paramiko
+scapy
+netifaces
+rich

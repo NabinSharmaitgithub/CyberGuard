@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Connected - Vulnerability Scanner</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">Vulnerability Scanner</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/scanner">Scanner</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/sniffer">Sniffer</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/bruteforce">Bruteforce</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/sitemap">Site Mapper</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/user_recon">User Recon</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/version_scan">Version Scan</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h1>Find Connected Devices</h1>
+        <p>Discover active devices on your local network.</p>
+
+        {% if error %}
+            <div class="alert alert-danger">{{ error }}</div>
+        {% endif %}
+
+        <form method="POST" action="/find_connected">
+            <div class="form-group">
+                <label for="interface">Select Network Interface</label>
+                <select class="form-control" id="interface" name="interface">
+                    {% for iface in interfaces %}
+                        <option value="{{ iface }}" {% if iface == selected_interface %}selected{% endif %}>{{ iface }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Scan</button>
+        </form>
+
+        {% if hosts is not none %}
+            <h2 class="mt-4">Scan Result</h2>
+            {% if hosts %}
+                <div class="alert alert-success">
+                    <p>Found {{ hosts|length }} devices:</p>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>IP Address</th>
+                                <th>MAC Address</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for host in hosts %}
+                                <tr>
+                                    <td>{{ host.ip }}</td>
+                                    <td>{{ host.mac }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <div class="alert alert-info">
+                    No devices found.
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

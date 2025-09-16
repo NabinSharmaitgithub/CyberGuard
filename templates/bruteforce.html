@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSH Bruteforce - Vulnerability Scanner</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">Vulnerability Scanner</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/scanner">Scanner</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/sniffer">Sniffer</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/user_recon">User Recon</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/version_scan">Version Scan</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h1>SSH Bruteforce</h1>
+        <p>Attempt to find SSH credentials by trying a list of usernames and passwords.</p>
+
+        {% if error %}
+            <div class="alert alert-danger">{{ error }}</div>
+        {% endif %}
+
+        <form method="POST" action="/bruteforce" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="target">Target Host</label>
+                <input type="text" class="form-control" id="target" name="target" value="{{ target if target }}" required>
+            </div>
+            <div class="form-group">
+                <label for="usernames">Usernames (comma-separated)</label>
+                <textarea class="form-control" id="usernames" name="usernames" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="user_file">Or Upload Usernames File</label>
+                <input type="file" class="form-control-file" id="user_file" name="user_file">
+            </div>
+            <div class="form-group">
+                <label for="passwords">Passwords (comma-separated)</label>
+                <textarea class="form-control" id="passwords" name="passwords" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="pass_file">Or Upload Passwords File</label>
+                <input type="file" class="form-control-file" id="pass_file" name="pass_file">
+            </div>
+            <button type="submit" class="btn btn-primary">Start Bruteforce</button>
+        </form>
+
+        {% if credentials is not none %}
+            <h2 class="mt-4">Bruteforce Result</h2>
+            {% if credentials %}
+                <div class="alert alert-success">
+                    Success! Found credentials: <strong>{{ credentials[0] }}:{{ credentials[1] }}</strong>
+                </div>
+            {% else %}
+                <div class="alert alert-danger">
+                    Failed to find credentials.
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+[{'title': 'Version Check Error', 'severity': 'Info', 'description': "Could not fetch headers: HTTPConnectionPool(host='localhost', port=80): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7790566330>: Failed to establish a new connection: [Errno 111] Connection refused'))"}]
