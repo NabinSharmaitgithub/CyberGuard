@@ -3,8 +3,6 @@
 </p>
 <h1 align=center>CyberGuard</h1>
 
-# CyberGuard
-
 A safe, modular tool that scans a given URL or IP for common, non-destructive vulnerabilities and produces a clear report.
 
 **Disclaimer:** This tool is for educational purposes and authorized testing only. Unauthorized scanning of websites is illegal. The user is responsible for their actions.
