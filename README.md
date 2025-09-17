@@ -1,5 +1,5 @@
 <p align="center">
-<img src='templates/Cyber.png' style="height:100px;width:100px;" >
+<img src='templates/cyber.png' style="height:100px;width:100px;" >
 </p>
 <h1 align=center>CyberGuard</h1>
 
