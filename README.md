@@ -1,5 +1,9 @@
+<p align="center">
+<img src='templates/Cyber.png' style="height:100px;width:100px;" >
+</p>
+<h1 align=center>CyberGuard</h1>
 
-# cyberGuard
+# CyberGuard
 
 A safe, modular tool that scans a given URL or IP for common, non-destructive vulnerabilities and produces a clear report.
 
@@ -19,8 +23,8 @@ A safe, modular tool that scans a given URL or IP for common, non-destructive vu
 1.  Clone the repository:
 
     ```bash
-    git clone https://github.com/your-username/vulnerability-scanner.git
-    cd vulnerability-scanner
+    git clone https://github.com/NabinSharmaitgithub/CyberGuard
+    cd CyberGuard
     ```
 
 2.  Install the dependencies:
