@@ -1,5 +1,5 @@
 
-# Python Vulnerability Scanner
+# cyberGuard
 
 A safe, modular tool that scans a given URL or IP for common, non-destructive vulnerabilities and produces a clear report.
 
